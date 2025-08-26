@@ -18,7 +18,7 @@ namespace Api.Controlles
             _context.Add(contato);
             _context.SaveChanges();
 
-            return Ok(contato);
+            return CreatedAtAction(nameof(ObterPorId), new {id = contato.Id}, contato);
         }
 
         [HttpGet("Buscar id: {id}")]
@@ -27,6 +27,16 @@ namespace Api.Controlles
             var contato =_context.Contatos.Find(id);
             if(contato == null) return NotFound();
             return Ok(contato);
+        }
+        [HttpGet("Obter por Nome")]
+        public IActionResult ObterPorNome(string nome){
+            
+            var contaBanco = _context.Contatos.Where(x => x.Nome.Contains(nome));
+            
+            if(contaBanco == null) return NotFound();
+            
+            
+            return Ok(contaBanco);
         }
 
         [HttpPut("Atualizar id: {id}")]
@@ -64,6 +74,5 @@ namespace Api.Controlles
 
 
         }
-        //[HttpGet($"Obter por nome: {nome}")]
     }
 }
