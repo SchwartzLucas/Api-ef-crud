@@ -21,7 +21,7 @@ namespace Api.Controlles
             return Ok(contato);
         }
 
-        [HttpGet($"Buscar id: {id}")]
+        [HttpGet("Buscar id: {id}")]
         public IActionResult ObterPorId(int id){
             
             var contato =_context.Contatos.Find(id);
@@ -29,7 +29,7 @@ namespace Api.Controlles
             return Ok(contato);
         }
 
-        [HttpPut($"Atualizar id: {id}")]
+        [HttpPut("Atualizar id: {id}")]
         public IActionResult Atualizar(int id, Contato contato){
 
             var contatoBanco = _context.Contatos.Find(id);
@@ -47,7 +47,7 @@ namespace Api.Controlles
             
         }
 
-        [HttpDelete($"Deletar id: {id}")]
+        [HttpDelete("Deletar id: {id}")]
         public IActionResult Deletar(int id)
         {
 
@@ -64,6 +64,6 @@ namespace Api.Controlles
 
 
         }
-        [HttpGet($"Obter por nome: {nome}")]
+        //[HttpGet($"Obter por nome: {nome}")]
     }
 }
